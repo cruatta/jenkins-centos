@@ -20,4 +20,5 @@ ONBUILD RUN chmod +x /config/setup.sh
 ONBUILD RUN /config/setup.sh 
 
 EXPOSE 8080
-CMD ["/bin/sh", "-c", "/start.sh"]
+ENTRYPOINT ["/bin/bash"]
+CMD ["/start.sh"]

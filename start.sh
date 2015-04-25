@@ -1,2 +1,5 @@
-#!/bin/sh
-service jenkins start && tail -f /var/log/jenkins/jenkins.log
+#!/bin/bash
+service jenkins start
+while [[ $(service jenkins status) ]]; do
+	sleep 5
+done
