@@ -11,6 +11,7 @@ done
 
 # Register our default plugins
 if [[ -d $JENKINS_HOME/plugins ]]; then 
+	echo "Adding default plugins to the container"
 	cd $JENKINS_HOME/plugins
 	wget https://updates.jenkins-ci.org/download/plugins/scm-api/0.2/scm-api.hpi
 	wget https://updates.jenkins-ci.org/download/plugins/git-client/1.16.1/git-client.hpi
@@ -26,7 +27,8 @@ else
 fi
 
 if [[ -d $JENKINS_HOME/init.groovy.d ]]; then
-	cp /tcp-slave-agent-port.groovy $JENKINS_HOME/init.groovy.d/
+	echo "Adding tcp slave configuration"
+	cp /tcp-slave-agent-port.groovy $JENKINS_HOME/init.groovy.d/tcp-slave-agent-port.groovy
        	service jenkins reload
 fi
 
