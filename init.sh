@@ -10,8 +10,7 @@ while true; do
 done
 
 # Register our default plugins
-if [[ -d $JENKINS_HOME/plugins ]] 
-then 
+if [[ -d $JENKINS_HOME/plugins ]]; then 
 	cd $JENKINS_HOME/plugins
 	wget https://updates.jenkins-ci.org/download/plugins/scm-api/0.2/scm-api.hpi
 	wget https://updates.jenkins-ci.org/download/plugins/git-client/1.16.1/git-client.hpi
@@ -25,4 +24,10 @@ else
 	echo "$JENKINS_HOME/plugins does not exist. Jenkins probably failed to start for the first time"
 	exit 1
 fi
+
+if [[ -d $JENKINS_HOME/init.groovy.d ]]; then
+	cp /tcp-slave-agent-port.groovy $JENKINS_HOME/init.groovy.d/
+       	service jenkins reload
+fi
+
 service jenkins stop
