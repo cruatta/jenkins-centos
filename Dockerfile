@@ -22,5 +22,4 @@ ONBUILD RUN /config/setup.sh
 
 EXPOSE 8080
 EXPOSE 50000
-ENTRYPOINT ["/bin/bash"]
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]

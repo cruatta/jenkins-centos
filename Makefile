@@ -4,5 +4,5 @@ build:
 run:
 	docker run -d -P cruatta/jenkins-centos
 
-cleanbuild:
-	docker build -t cruatta/jenkins-centos -no-cache -rm=true .
+buildclean:
+	docker build -t cruatta/jenkins-centos --no-cache --rm=true .
