@@ -26,10 +26,10 @@ else
 	exit 1
 fi
 
-if [[ -d $JENKINS_HOME/init.groovy.d ]]; then
-	echo "Adding tcp slave configuration"
-	cp /tcp-slave-agent-port.groovy $JENKINS_HOME/init.groovy.d/tcp-slave-agent-port.groovy
-       	service jenkins reload
-fi
+# Setup the tcp slave
+mkdir $JENKINS_HOME/init.groovy.d
+echo "Adding tcp slave configuration"
+cp /tcp-slave-agent-port.groovy $JENKINS_HOME/init.groovy.d/tcp-slave-agent-port.groovy
+service jenkins reload
 
 service jenkins stop
